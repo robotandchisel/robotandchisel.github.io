@@ -1,0 +1,35 @@
+---
+layout: post
+title: 'Coming Soon: NUKE, and other ramblings....'
+description: The Nearly Universal Kinematics Engine is nearly released.
+date: '2009-12-16T20:55:00.004-05:00'
+author: Michael Ferguson
+tags:
+- dynamixel
+- robots
+modified_time: '2009-12-17T15:47:56.832-05:00'
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-8870596465851319171
+blogger_orig_url: http://www.showusyoursensors.com/2009/12/coming-soon-nuke-and-other-ramblings.html
+---
+
+It's been a bit quiet here, but that means stuff is getting done. NUKE: the Nearly Universal Kinematics
+Engine under development throughout this fall is nearing release -- a beta version should be out this
+weekend! This is the same software that powered all 3 of the winners of CNRG's Walker Challenge.<br />
+<br />
+As we approach release, I've been adding a number of things into my code. Most people have probably
+noticed that I've putting a voltage divider circuit onto an analog port to measure the battery level
+(LiPOs don't like low voltage levels...). Up at CNRG, I had a bit of "duh, why didn't I think of that"
+moment when Jon Hylands suggested using the AX-12's onboard voltage measurement. So, without further ado,
+here's a snippet of code from Jon that will save your LiPOs (it's also at the startup of the default NUKE
+sketch):<br />
+
+<pre>
+float voltage = (ax12GetRegister (1, AX_PRESENT_VOLTAGE, 1)) / 10.0;
+Serial.print ("System Voltage: ");
+Serial.print (voltage);
+Serial.println (" volts.");
+if (voltage < 10.0)
+    while(1);
+</pre>
+
+If you are running this code at startup, you'll want at least a 1000ms delay beforehand, or you won't get a real voltage reading.
