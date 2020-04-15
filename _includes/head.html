@@ -12,6 +12,9 @@
     {% else %}
       {{ page.title }} &middot; {{ site.title }}
     {% endif %}
+    {% if site.tags != "" %}
+       {% include collecttags.html %}
+     {% endif %}
   </title>
 
   <!-- CSS -->
