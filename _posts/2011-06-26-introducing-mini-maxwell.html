@@ -1,0 +1,40 @@
+---
+layout: post
+title: Introducing Mini Maxwell
+description: I designed a little brother for Maxwell.
+date: '2011-06-26T15:08:00.006-04:00'
+author: Michael Ferguson
+tags:
+- maxwell
+- robots
+- ros
+modified_time: '2011-06-26T15:28:55.559-04:00'
+thumbnail: http://2.bp.blogspot.com/-dt6mRilKHI4/TgeHk7-BARI/AAAAAAAAAQA/J6GL27HWp-4/s72-c/mini_max_side.png
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-3042260640578937060
+blogger_orig_url: http://www.showusyoursensors.com/2011/06/introducing-mini-maxwell.html
+---
+
+While I am a strong proponent of <a href="/2011/02/06/introducing-maxwell">low-cost, human-scale mobile
+manipulators</a>, I also realize it's impractical for everyone to be playing with such large robots.
+Earlier this year I designed a small robot using an iRobot Create, some custom ABS, a Kinect, and an
+AX-12 based arm and neck. This small mobile manipulation platform had no name for some time, but every
+time I showed it to people they exclaimed "Oh! A mini version of Maxwell!". And so, this robot got the
+name "Mini Maxwell".<br />
+<br />
+<img style="display: block; margin: 0px auto 10px; text-align: center; width: 75%;" src="/{{ site.baseurl }}assets/images/2011-06-26-mini_max_side.png" /><br />
+
+There are now about half a dozen Mini Maxes running around across the United States. As our software
+development is starting to calm down, I thought I would take a moment to showcase a few of the robot's
+features.<br />
+<br />
+As you probably have guessed, this robot runs ROS (on a netbook). We're using an ArbotiX to control
+the arm and neck servos (7 AX-12s total), while the Create base connects directly to the netbook.
+Two demo buttons are attached through the ArbotiX allowing users to quickly add user input to programs.<br />
+<br />
+<img style="display: block; margin: 0px auto 10px; text-align: center;  width: 75%;" src="/{{ site.baseurl }}assets/images/2011-06-26-mini_max_rear.png"/><br />
+The arm has 4 degrees of freedom, losing the wrist roll found in Maxwell. A single servo gripper
+is installed, although a more sophisticated one is in the works:<br />
+<br />
+<img style="display: block; margin: 0px auto 10px; text-align: center;  width: 75%;" src="/{{ site.baseurl }}assets/images/2011-06-26-mini_max_arm.png"/><br />
+I demoed Mini Max earlier this week at the HBRC meeting, showing how we can easily move around toy blocks.
+I've posted a number of tutorials and other documentation on the ROS wiki as well.
