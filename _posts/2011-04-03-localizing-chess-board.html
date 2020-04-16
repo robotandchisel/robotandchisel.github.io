@@ -1,0 +1,34 @@
+---
+layout: post
+title: Localizing the Chess Board
+description: A look at the perception side of the AAAI Small Scale Manipulation Challenge.
+date: '2011-04-03T01:21:00.004-04:00'
+author: Michael Ferguson
+tags:
+- maxwell
+- robots
+modified_time: '2011-04-03T01:33:25.915-04:00'
+thumbnail: http://4.bp.blogspot.com/-Re2lmHPLtBc/TZgF7P7hLmI/AAAAAAAAAOk/i4avbXnKJFQ/s72-c/Screenshot-4.png
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-7386316958397049211
+blogger_orig_url: http://www.showusyoursensors.com/2011/04/localizing-chess-board.html
+---
+
+The AAAI Small Scale Manipulation challenge is just a few months away now. I've been working on
+a slightly different approach to chess board localization over the past few days. We had previously
+been using a Canny edge detector, followed by OpenCV's probabilistic Hough transform to find
+lines. From this, we iterated over hypothesis about which lines corresponded to particular
+lines on the board.<br />
+<br />
+Recently, I had a different thought: forget the lines, let's look at points alone. I'm now finding
+the intersections of the lines, projecting those points to 3d using the point cloud, and then doing
+ICP against an ideal set of intersections:<br />
+<br />
+<a href="/{{ site.baseurl }}assets/images/2011-04-03-rviz.png">
+<img style="display:block; margin:0px auto 10px; text-align:center;cursor:pointer; cursor:hand;width: 500px;" src="/{{ site.baseurl }}assets/images/2011-04-03-rviz.png" /></a><br />
+
+You can see fairly large red spheres inserted where each of the detected intersections is, and a TF
+frame being localized into the lower corner of the board. <br />
+<br />
+This is working OK so far. One issue is that the ICP is occasionally deciding that it has converged
+when it is actually quite far off. I think the next step will be creating a different method for
+finding the correspondence hypothesis.
