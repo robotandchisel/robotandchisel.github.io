@@ -11,6 +11,7 @@ modified_time: '2020-04-07T10:30:37.063-04:00'
 thumbnail: https://1.bp.blogspot.com/-caOsU8XEV-0/XoyJaEsaQOI/AAAAAAAADiA/lapq-wHwbH4wHDClG9QioJZQH3h7cjmyACK4BGAYYCw/s72-c/Screen%2BShot%2B2020-04-07%2Bat%2B10.07.10%2BAM.png
 blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-1482389950025892645
 blogger_orig_url: http://www.showusyoursensors.com/2020/04/code-coverage-for-ros.html
+redirect_from: "/2020/04/code-coverage-for-ros.html"
 ---
 
 _This is day 3 of my 2020 [National Robotics Week](/{{site.baseurl}}tag/national-robotics-week) blog marathon!_

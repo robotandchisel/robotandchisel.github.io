@@ -11,6 +11,7 @@ tags:
 modified_time: '2010-12-31T23:30:14.605-05:00'
 blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-8073844081896967124
 blogger_orig_url: http://www.showusyoursensors.com/2010/12/neato-slam.html
+redirect_from: "/2010/12/neato-slam.html"
 ---
 
 Here is yet another story for "the power of open source.

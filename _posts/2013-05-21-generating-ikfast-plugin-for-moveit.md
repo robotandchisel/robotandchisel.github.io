@@ -12,6 +12,7 @@ tags:
 modified_time: '2013-05-30T14:51:12.534-04:00'
 blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-7602906199008063605
 blogger_orig_url: http://www.showusyoursensors.com/2013/05/generating-ikfast-plugin-for-moveit.html
+redirect_from: "/2013/05/generating-ikfast-plugin-for-moveit.html"
 ---
 
 Over the past few weeks I've been using MoveIt quite a bit -- I was actually using the Pick and
