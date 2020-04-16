@@ -1,0 +1,43 @@
+---
+layout: post
+title: Buildbot-ROS
+description: How to build your own buildfarm for building your code.
+date: '2013-09-29T16:56:00.001-04:00'
+author: Michael Ferguson
+tags:
+- ros
+modified_time: '2013-09-29T16:57:46.384-04:00'
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-4020746149220997554
+blogger_orig_url: http://www.showusyoursensors.com/2013/09/buildbot-ros.html
+---
+
+It has been a while since posting, I figured I'd give an update on a project I've been
+working on recently: a ROS buildfarm using BuildBot.<br />
+<br />
+Of course you are probably thinking, "but ROS already has a buildfarm?" And that is
+correct, however I found that it was quite hard to setup a personal instance of the
+Jenkins-based farm that builds ROS Debian packages. There is not all that much
+documentation, and extending it is not ideal for me as it uses an interesting mix of
+java-ish stuff.<br />
+<br />
+Enter buildbot. Buildbot is like Jenkins, except completely written in Python, and
+I like Python. While buildbot doesn't have as many features and plugins as Jenkins,
+it has more than enough to get the job done. Anyways, I created a buildfarm using
+buildbot + catkin, which can do the following:<br />
+<br />
+<ul>
+<li>Build Debians, just like on the ROS buildfarm. This includes doing it all in a
+cowbuilder so you know that the dependencies are right.</li>
+<li>Build test jobs, similarly to the ROS buildfarm, whenever you push to a repository
+(only git is supported)</li>
+<li>Build doc jobs, pretty much like the ROS buildfarm.</li>
+<li>Build arbitrary source debs into binaries.</li>
+</ul>
+The system loads its configuration from a rosdistro file. In addition to loading what
+to build, I also have it setup to load where to get debs from in the rosdistro,
+making it easy to change deployment setup.<br />
+<br />
+Buildbot-ROS is still quite early in development, but does most of the things that an
+individual or small team would need internally. The documentation is in the README,
+which gets nicely rendered by github. The code can be found on my github account:
+<a href="https://github.com/mikeferguson/buildbot-ros">https://github.com/mikeferguson/buildbot-ros</a>

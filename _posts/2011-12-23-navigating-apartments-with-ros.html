@@ -1,0 +1,32 @@
+---
+layout: post
+title: Navigating Apartments with ROS
+description: Navigation and mapping in smaller homes.
+date: '2011-12-23T02:58:00.002-05:00'
+author: Michael Ferguson
+tags:
+- slam
+- maxwell
+- ros
+modified_time: '2011-12-23T03:06:17.836-05:00'
+thumbnail: http://1.bp.blogspot.com/-PIoZr3aKD9w/TvQ1CMW-l3I/AAAAAAAAATg/RjbySiNWXnc/s72-c/apt_313.png
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-7258121804593171117
+blogger_orig_url: http://www.showusyoursensors.com/2011/12/navigating-apartments-with-ros.html
+---
+
+While Maxwell tends to reside at the office most days, I've recently brought him home a few times.
+I'm now working towards some cool demos of mobile manipulation in a home environment, but the
+first step is of course to navigate that environment.<br />
+<br />
+I've been trying for some time to use only the ASUS on the head, however, the thick carpeting
+and carpet/linoleum transitions really throw of my odometry at times. I finally dropped back and
+just used my low-cost Hokuyo. This evening I created a new map, without much effort at all,
+using <i>gmapping</i> and the Hokuyo:<br />
+<br />
+<img style="display: block; margin: 0px auto 10px; text-align: center; cursor: pointer; width: 70%" src="/{{ site.baseurl }}assets/images/2011-12-23-map.png"/>
+
+Some preliminary tests show that my planner parameters will probably work well, even in the
+smaller environment (the map above is 10m x 10m). What is very apparent is that my laser
+doesn't pick up much of my furniture -- the larger room is actually mostly full with tables at
+various heights, which are only showing up as stray points to the laser. Adding the ASUS for
+3D obstacle avoidance should help quite a bit.
