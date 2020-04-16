@@ -1,7 +1,7 @@
 # Setup
 title: Robot & Chisel
 tagline: stuff by michael ferguson.<br>robots, woodworking, etc.
-url: https://robotandchisel.com
+url: https://robotandchisel.github.io
 paginate: 1
 baseurl: ""
 permalink: pretty
@@ -10,6 +10,7 @@ permalink: pretty
 plugins:
   - jekyll-gist
   - jekyll-paginate
+  - jekyll-redirect-from
   - jekyll-seo-tag
 
 # Optimize Jekyll
