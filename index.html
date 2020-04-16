@@ -3,40 +3,48 @@ layout: default
 title: Home
 ---
 
-<div class="posts">
-  {% for post in paginator.posts %}
-  <div class="post">
-    <h1 class="post-title">
-      <a href="{{ post.url }}">
-        {{ post.title }}
-      </a>
-    </h1>
-
-    <span class="post-date">{{ post.date | date_to_string }}
-      {% for tag in post.tags %}
-        {% capture tag_name %}{{ tag }}{% endcapture %}
-        <a href="/{{ site.baseurl }}tag/{{ tag_name }}"><code class="highligher-rouge"><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>
-      {% endfor %}
-    </span>
-
-    {{ post.content }}
-  </div>
-  {% endfor %}
-</div>
-
-<div class="pagination">
-  {% if paginator.next_page %}
-    <a class="pagination-item older" href="/{{ site.baseurl }}page{{paginator.next_page}}">Older</a>
-  {% else %}
-    <span class="pagination-item older">Older</span>
-  {% endif %}
-  {% if paginator.previous_page %}
-    {% if paginator.page == 2 %}
-      <a class="pagination-item newer" href="/{{ site.baseurl }}">Newer</a>
-    {% else %}
-      <a class="pagination-item newer" href="/{{ site.baseurl }}page{{paginator.previous_page}}">Newer</a>
-    {% endif %}
-  {% else %}
-    <span class="pagination-item newer">Newer</span>
-  {% endif %}
-</div>
+<h1>Welcome</h1>
+Over the past decade I've built a number of cool robots. A few of them have even done some
+useful stuff. This page is a quick overview of my work, check out the
+<a href="/{{ site.baseurl }}blog">blog</a> for more detailed write ups.<br />
+<br />
+I currently work at <a href="https://www.cobaltrobotics.com">Cobalt Robotics</a> where we
+offer robotic security services. As the <i>Director of Research and Development</i>, I can not
+tell you much about the cutting edge stuff I am currently working on.<br />
+<br />
+<img width="360" src="/{{ site.baseurl }}assets/images/fetch.jpg" style="float:right; margin: 10px;" />
+I was previously CTO at Fetch Robotics (2014-2017). I led the design and implementation
+of software and electronics for the Fetch and Freight robots. These platforms won the
+Material Handling Institute (MHI) Best New Innovation Award at MODEX 2016. I was a major
+contributor to a number of software milestones including the development of key firmware
+components, secure bootloaders, hand-eye calibration, and high-level demonistrations of
+mobility and manipulation that are still part of the research product.<br />
+<br />
+<img width="280" src="/{{ site.baseurl }}assets/images/ubr1.jpg" style="float: left; margin: 10px;" />
+During my time as CTO of Unbounded Robotics (2013-2014), I led the design of the
+software and electrical systems for the UBR-1 robot platform.
+Unbounded didn't make it past the seed round, but we did release some code on
+<a href="https://github.com/unboundedrobotics">GitHub</a>.<br />
+<br />
+Unbounded Robotics was a spin-off from Willow Garage, a famed robotics incubator that
+I had the honor of working at for almost two years. During my time at Willow Garage
+I developed a number of software packages. These include the generic 
+<a href="https://github.com/ros-perception/calibration">calibration</a> package,
+the turtlebot arm, and
+<a href="https://github.com/ros-drivers/rosserial">rosserial</a> (which, for all
+my best attempts, refuses to die).<br />
+<br />
+<img width="280" src="/{{ site.baseurl }}assets/images/maxwell.jpg" style="float: right; margin: 10px;" />
+Prior to Willow Garage, I was a graduate student at State University at New York, Albany.
+As part of my master's thesis I built a low-cost mobile manipulator, Maxwell. Maxwell
+won the 2011 AAAI Small Scall Manipulation Challenge. I've made a number of
+<a href="/{{ site.baseurl }}tags/maxwell">number of blog posts</a> and a
+<a href="/{{ site.baseurl }}assets/papers/2011-maxwell.pdf">RoboGames paper</a> detailing Maxwell.<br />
+<br />
+I've also built a number of hobby robots SMALdog (sorta-maybe-almost-littledog)
+is a small ArbotiX-based walker that could <a href="http://www.youtube.com/watch?v=TKs31nOf8pY">jump</a>
+[<a href="https://github.com/mikeferguson/smaldog">GitHub</a>].
+I won the <a href="http://www.showusyoursensors.com/2009/04/viva-la-crate.html">2009 Trinity College Fire
+Fighting Home Robot Contest</a> with a stupidly simple (and cheap) robot
+[<a href="https://github.com/mikeferguson/crater">GitHub</a>]
+[<a href="http://forums.trossenrobotics.com/tutorials/build-articles-130/build-a-fire-fighting-robot-3288/">Tutorial</a>].

@@ -2,7 +2,8 @@
 title: Robot & Chisel
 tagline: stuff by michael ferguson.<br>robots, woodworking, etc.
 url: https://robotandchisel.github.io
-paginate: 1
+paginate: 3
+paginate_path: "/blog/page:num/"
 baseurl: ""
 permalink: pretty
 

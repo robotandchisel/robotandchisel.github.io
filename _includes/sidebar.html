@@ -26,6 +26,7 @@
         {%- endif -%}
       {%- endfor -%}
 
+      <a class="sidebar-nav-item {% if page.url contains 'blog' %} active {% endif %} " href="/{{ site.baseurl }}blog">Blog</a>
       <a class="sidebar-nav-item" href="https://github.com/mikeferguson">GitHub</a>
       <a class="sidebar-nav-item" href="https://twitter.com/therealfergs">Twitter</a>
     </nav>
