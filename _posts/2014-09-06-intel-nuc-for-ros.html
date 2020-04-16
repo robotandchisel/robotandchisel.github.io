@@ -1,0 +1,64 @@
+---
+layout: post
+title: Intel NUC for ROS
+description: A killer small computer for your robot.
+date: '2014-09-06T18:38:00.000-04:00'
+author: Michael Ferguson
+tags:
+- robomagellan
+- ros
+modified_time: '2014-09-06T18:45:25.887-04:00'
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-7069064960527230561
+blogger_orig_url: http://www.showusyoursensors.com/2014/09/intel-nuc-for-ros.html
+---
+
+This post has been a long time coming -- I think I promised it to several HBRC members at
+the July SIG...<br />
+<br />
+I've frequently been asked "what computer do you use on your robots?", usually from someone
+looking at a variety of sub-$100 ARM boards. ARM processors have come a long way, but for
+a ROS computer, they are not the easiest choice. Austin Hendrix has done a lot of work to
+get a <a href="http://wiki.ros.org/indigo/Installation/UbuntuARM">buildfarm up and running for ARM processors</a>
+-- but there is still a long way to go and many things will not work "out-of-the-box".<br />
+<br />
+So my choice? Well, it's not under $100, but it is a very fast, fairly low power machine
+(here, I define low-power in the sub-15W range). The latest generation of Intel NUC
+(Next Unit of Computing) modules offer quite a few options for small Intel Core-based 
+omputers. I'm using the 4th-generation i3-based D34010WYK. This offers quite a bit of
+compute power for ROS, especially when you consider that early TurtleBots ran on a
+single-core Atom. I've used 35W TDP i3 processors on a number of mobile manipulation
+problems and been able to run the OpenNI/OpenNI2-based drivers, the navigation stack and
+MoveIt! without much difficulty. If you're looking for a bit more processor, there is an
+i5-based version for $100 more.<br />
+
+<center>
+<img border="0" src="/{{ site.baseurl }}assets/images/2014-09-06-nuc.jpg" width="60%"/>
+<i>Intel NUC (image from Intel NUC website)</i>
+</center>
+
+These computers are sold as either a board (somewhat hard to find for sale) or as a kit
+which includes the case. Either option requires memory, hard drive and wifi card to be
+added. My setup is:<br/>
+<br />
+<ul>
+<li><a href="http://www.amazon.com/gp/product/B00DSGLM64">8GB Crucial Ballistix Sport SODIMM</a>.
+Whatever you choose, be sure it is 1.35V RAM -- the newer NUC models work ONLY with 1.35V RAM
+(many modules are 1.5V).</li>
+<li><a href="http://www.amazon.com/gp/product/B00BQ8RFAI">120GB Crucial mSATA SSD</a>. Intel
+offers a larger case version of the NUC that fits a standard 2.5" drive, but the smaller
+versions only take an mSATA drive.</li>
+<li><a href="http://www.amazon.com/Intel-Network-7260-HMWG-Wireless-AC-Bluetooth/dp/B00DMCVKMU">Intel 7260 Wireless-AC Card</a>.
+This card will work best with Ubuntu 14.04, older versions will need an updated kernel
+(at least 3.13) to get working drivers. No need for antennas as they are already in the case.</li>
+</ul>
+
+These boards take 12-24V DC input, but are probably most efficient at 19V. I'm powering mine off
+a 12V battery connected to a <a href="http://www.pololu.com/product/2571">Pololu 5A Step-Up Regulator</a>
+that is configured to output the desired 19V. My batteries will never get even close to 19V even
+when fully charged, and so the regulator should not have any issues.<br />
+<br />
+I would recommend installing Ubuntu 14.04 and using ROS Indigo for these machines. If you want
+to use an older Ubuntu distro, you should definitely make sure your wifi card is compatible,
+because the Ethernet port will not work with the drivers present on the 12.04 installer and you will
+have to connect to ubuntu.com to update somehow. Another alternative is to look for a NUC based
+on the 3rd-generation Intel Core processors, but these might be hard to locate.
