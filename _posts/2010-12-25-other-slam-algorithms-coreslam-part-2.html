@@ -1,0 +1,28 @@
+---
+layout: post
+title: 'Other SLAM Algorithms: CoreSLAM, Part 2'
+description: More progress on CoreSLAM in ROS.
+date: '2010-12-25T17:40:00.003-05:00'
+author: Michael Ferguson
+tags:
+- robots
+- ros
+- slam
+modified_time: '2010-12-25T17:47:12.367-05:00'
+thumbnail: http://2.bp.blogspot.com/_qmthA_fNJ-Y/TRZz_we-YaI/AAAAAAAAAL0/Hro_T_YHDrc/s72-c/2010-12-25-neato-ils-coreslam-5.png
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-7406005833572853585
+blogger_orig_url: http://www.showusyoursensors.com/2010/12/other-slam-algorithms-coreslam-part-2.html
+---
+
+I've now get the Monte Carlo Localization turned on, map publishing working in ROS, and a number of
+parameters defined. This required some hacking of the CoreSLAM library, in particular I removed all
+of the references to differential drive odometry, instead loading odometry externally from TF.<br />
+<br />
+Here's an updated map using the 12-12-neato-ils bag file:<br />
+<br />
+<a  href="/{{ site.baseurl }}assets/images/2010-12-25-coreslam.png">
+<img style="margin: 0pt 10px 10px 0pt; width: 420px; height: 420px;" src="/{{ site.baseurl }}assets/images/2010-12-25-coreslam.png"/></a><br />
+<br />
+There's still some work to fix the way that the map->odom transform is handled, and allow a
+configurable map size and resolution (both of which will require reworking some more of the
+underlying library). I'm hoping to have the code released shortly.

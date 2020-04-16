@@ -1,0 +1,36 @@
+---
+layout: post
+title: 'Other SLAM Algorithms: CoreSLAM'
+description: A look at alternative SLAM implementations.
+date: '2010-12-23T02:34:00.008-05:00'
+author: Michael Ferguson
+tags:
+- robots
+- ros
+- slam
+modified_time: '2010-12-23T02:48:28.153-05:00'
+thumbnail: http://3.bp.blogspot.com/_qmthA_fNJ-Y/TRL9TCK2AWI/AAAAAAAAALk/15mqCrjdUqc/s72-c/coreslam.png
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-8854955076343883208
+blogger_orig_url: http://www.showusyoursensors.com/2010/12/alternative-slam.html
+---
+
+<i>gmapping</i> is the map building (SLAM) software most commonly used in ROS. It works very
+well if you have a very high quality and long-range laser. The Neato laser is neither high
+quality nor long range (and the low-cost Hokuyos, while fairly accurate, are still near-sighted).
+There isn't a lot of academic literature that mentions low-cost lidars (unless it's a paper
+about building a low cost module).<br />
+<br />
+One paper recently published that actually uses a short range Hokuyo is
+<a href="http://openslam.org/coreslam.html">CoreSLAM</a>, a SLAM implementation in under
+200 lines of code. Well..., the  map update/storage aspects are less than 200 lines of C
+code, however the complete system relies on a bit more, namely a particle filter for
+localization.<br />
+<br />
+It looked good. So I integrated it into ROS:<br />
+<br />
+<a href="/{{ site.baseurl }}assets/images/2010-12-23-map.png">
+<img style="margin: 0pt 10px 10px 0pt; cursor: pointer; width: 320px; height: 320px;" src="/{{ site.baseurl }}assets/images/2010-12-23-map.png"/></a>
+<br />
+This map is currently only using odometry, I'm going to try and get the MCL localization
+aspects working more tomorrow.  I also need to get the map_saver to work with my ROS
+wrapper. I hope to have this on our SVN by the weekend.

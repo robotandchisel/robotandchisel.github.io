@@ -1,0 +1,45 @@
+---
+layout: post
+title: The Armadillo Goes Mapping
+description: Building maps with a small robot, Hokuyo laser and ROS.
+date: '2010-11-01T12:38:00.008-04:00'
+author: Michael Ferguson
+tags:
+- robots
+- ros
+- slam
+modified_time: '2011-03-19T22:56:08.204-04:00'
+thumbnail: http://2.bp.blogspot.com/_qmthA_fNJ-Y/TM7u4D1dV5I/AAAAAAAAALI/rORyhoyyLEw/s72-c/armadillo.jpg
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-1404427570467743938
+blogger_orig_url: http://www.showusyoursensors.com/2010/11/armadillo-goes-mapping.html
+---
+
+<a href="/{{ site.baseurl }}assets/images/2010-11-01-armadillo.jpg">
+<img style="float: left; margin: 0pt 10px 10px 0pt; width: 320px; height: 320px;" src="/{{ site.baseurl }}assets/images/2010-11-01-armadillo.jpg"/></a>
+
+Several weeks ago I built a new, small robot platform that could be used as a testbed for the ArbotiX-ROS bindings.
+That robot is the Armadillo. The Armadillo has a differential drive base with a pretty decent payload, a FitPC2 brain,
+and a 4DOF arm. He's also sporting a Hokuyo URG-04LX-UG01 laser range finder.<br />
+<br />
+
+The poor Armadillo was sitting around for quite a while until I upgraded his motor drivers to handle the extra weight
+of the platform.  However, he's now fully operational. To test out whether his odometry would be good enough to
+work with the ROS navigation stack, he was driven around to build a series of maps.<br />
+
+<a href="/{{ site.baseurl }}assets/images/2010-11-01-home.png">
+<img style="float: left; margin: 0pt 10px 10px 0pt; cursor: pointer; width: 320px; height: 320px;" src="/{{ site.baseurl }}assets/images/2010-11-01-home.png"/></a>
+<br />
+
+The first map is of the first floor of my house. The Armadillo started in the living room, when down the hallway and
+into the kitchen, and then returned. The map came out pretty good, I plan to collect a map of the complete house later
+this week.<br />
+<br />
+A second, much larger map was made of the CS department hallways. This one had some issues. In particular the scan
+matching was creating false positives, which "shortened" the hallways. I'm still hopeful this can be made to work
+though, with a bit more parameter tweaking. Below, the image on the left is the map from gmapping, and the image on
+the right is a raw odometry-based costmap in RViz:<br />
+<br />
+<center>
+<a href="/{{ site.baseurl }}assets/images/2010-11-01-rviz.png">
+<img style="margin: 0pt 10px 10px 0pt; width: 600px; " src="/{{ site.baseurl }}assets/images/2010-11-01-rviz.png" /></a>
+</center>

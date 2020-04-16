@@ -1,0 +1,46 @@
+---
+layout: post
+title: ROS and Other Ramblings
+description: I've been working on a poor man's lidar for ROS navigation.
+date: '2010-08-09T00:20:00.005-04:00'
+author: Michael Ferguson
+tags:
+- arbotix
+- robots
+- ros
+modified_time: '2010-08-09T00:43:05.831-04:00'
+thumbnail: http://4.bp.blogspot.com/_qmthA_fNJ-Y/TF-Dt5JvOyI/AAAAAAAAAKs/kPx7_SKqgDw/s72-c/PML.jpg
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-1473812795715082045
+blogger_orig_url: http://www.showusyoursensors.com/2010/08/ros-and-other-ramblings.html
+---
+
+<a href="/{{ site.baseurl }}assets/images/2010-08-09-pml.jpg">
+<img style="float: left; margin: 0pt 10px 10px 0pt; width: 240px; height: 320px;" src="/{{ site.baseurl }}assets/images/2010-08-09-pml.jpg" /></a>
+
+I've been a bit ineffective at finishing things lately, and thus haven't had much to say in this blog.
+Issy got a new laser cut body,
+<a href="http://forums.trossenrobotics.com/gallery/files/1/7/6/8/img_1893.resized.jpg">some teaser pictures are over at TRC</a>,
+but I haven't gotten back to software development on him yet.<br />
+<br />
+I've been a bit distracted playing around with navigation and motion control under ROS. During July I built a "Poor Man's LIDAR"
+(or PML for short), out of a long range IR sensor and an AX-12.  The image to the left shows the PML mounted on ROSalyn, an
+iRobot  Create based ROS-powered robot I've recently assembled at the University  lab. I'm using a new ArbotiX-derivative board
+to control an AX-12 pan  and tilt and the PML.<br />
+<br />
+I actually bought the sensor about 18 months ago -- originally to put on REX (may he rest in pieces), but hadn't gotten around
+to actually hooking it up until recently (partially inspired by
+<a href="http://streebgreebling.blogspot.com/2010/04/poor-manr-laser-scanner.html">the successes that Bob Mottram had</a>).
+All in all, it works fairly well -- way better results than I ever had with a sonar ring, but of course nowhere near a true LIDAR.
+The PML results are broadcast within ROS as if they were actually produced by a laser scanner. You can see the scan (black dots)
+and then a costmap_2d generation (red dots are lethal objects, blue dots are expanded version for motion planning) showing up in
+the RVIZ view (the robot is at the end of our hallway, the range of the costmap is 3m, less than the 5 or so meters that the
+laser can trace out, so there's no costmap generation of the walls inside the rooms in the distance, just the laser scan dots).<br />
+<a href="/{{ site.baseurl }}assets/images/2010-08-09-rviz.png">
+<img style="float: right; margin: 0pt 0pt 10px 10px; cursor: pointer; width: 320px; height: 167px;" src="/{{ site.baseurl }}assets/images/2010-08-09-rviz.png" /></a>
+<br />
+All of this ROS work is towards the goal of producing a very robust, and extensive ROS package for the ArbotiX. The core of
+the package allows the ArbotiX to control AX-12 servos, read/write digital IO, and read analog inputs -- all within ROS.
+There's also extensions to control differential drive robots, or NUKE-powered walkers, using the standard "cmd_vel" topic
+-- and publish odometry such that the bots could be tied into the ROS navigation stack. Version 0.1 is now in SVN, although
+the ROS API is quite unstable and will be changing drastically in 0.2 (to a much nicer, and more robust interface, which
+also sets up several features I want to implement further down the line).

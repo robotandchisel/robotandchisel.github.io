@@ -1,0 +1,43 @@
+---
+layout: post
+title: Neato+ROS
+description: My initial work on a ROS driver for the Neato XV-11 robot is successful.
+date: '2010-12-12T02:32:00.004-05:00'
+author: Michael Ferguson
+tags:
+- robots
+- ros
+modified_time: '2010-12-23T02:48:01.185-05:00'
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-60517652959898119
+blogger_orig_url: http://www.showusyoursensors.com/2010/12/neatoros.html
+---
+
+It's no secret that I'm a big fan of low-cost sensory. In fact, I'm a bit obsessed with it.
+And lately, we've been in cheap-sensor overload. Last month I picked up a Kinect, although
+I haven't had a ton of time to play with it yet. Luckily it looks as though the OpenNI+ROS
+drivers will be in good shape by the end of the week -- when our semester ends and I'll have
+a bit more free time.<br />
+<br />
+On the subject of ROS, I'm also a big fan of that. Which brings us to the true reason for this
+post: I picked up a Neato XV-11 robotic vacuum this week (Thursday) and it arrived Friday
+(Amazon Prime $3.99 next-day shipping FTW). Friday night I spent about 4 hours getting the
+laser scanner and motor basics lined up, and then drove it around for a little while to
+discover numerous bugs. This afternoon I worked out most of the bugs, although I still need
+to work on the odometry calculations a bit more. Anyways, here's a quick video:<br />
+<br />
+<center>
+<object height="385" width="480">
+<param name="movie" value="https://www.youtube.com/v/bJVEFlbuFO4?fs=1&amp;hl=en_US">
+<param name="allowFullScreen" value="true">
+<param name="allowscriptaccess" value="always">
+<embed src="https://www.youtube.com/v/bJVEFlbuFO4?fs=1&amp;hl=en_US" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" height="385" width="480"></embed>
+</object>
+</center>
+<br />
+A couple of thanks to send out -- had it not been for
+<a href="http://random-workshop.blogspot.com/2010/12/communicating-with-xv-11.html">this blog post</a>
+by Hash79 of the Trossen Robotics Community, I probably wouldn't have even bought a Neato --
+but all that data! The Neato looks like it could be a very interesting competitor for the iRobot Create
+-- hopefully I can get the odometry/laser data to work in gmapping (so far, I've had *no* luck).<br />
+<br />
+More tomorrow -- as well as a code release (after cleaning things up).
