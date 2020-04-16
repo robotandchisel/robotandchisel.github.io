@@ -1,0 +1,155 @@
+---
+layout: post
+title: Robomagellan Update
+date: '2020-04-10T09:32:00.003-04:00'
+description: It is really starting to feel like spring here in New Hampshire, so I've been reviving my Robomagellan robot.
+author: Michael Ferguson
+tags:
+- robomagellan
+- national-robotics-week
+- ros
+- robots
+modified_time: '2020-04-10T09:32:47.791-04:00'
+thumbnail: /assets/images/2020-04-10-robomagellan.jpeg
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-8965141534352485000
+blogger_orig_url: http://www.showusyoursensors.com/2020/04/robomagellan-update.html
+---
+
+<i>This is day 6 of my National Robotics Week blog marathon.
+<a href="/{{ site.baseurl }}tag/national-robotics-week/">See the full set of posts here.</a></i>
+<br />
+<br />
+It is really starting to feel like spring here in New Hampshire, so I've been reviving my Robomagellan robot:<br />
+<br />
+
+<center>
+<a href="/{{ site.baseurl }}assets/images/2020-04-10-robomagellan.jpeg" style="margin-left: auto; margin-right: auto;">
+<img border="0" height="400" src="/{{ site.baseurl }}assets/images/2020-04-10-robomagellan.jpeg" width="395" /></a>
+<i>The current robot (not shown: Intel D435 sensor)</i>
+</center>
+<br />
+
+If you're not familiar with Robomagellan, here is the wikipedia description:<br />
+<blockquote><span style="background-color: white; color: #222222; font-family: sans-serif; font-size: 14px;">
+Robomagellan was created by the Seattle Robotics Society and is a small scale&nbsp;</span><a class="mw-redirect" href="https://en.wikipedia.org/wiki/Autonomous_vehicle" style="background-image: none; color: #0b0080; font-family: sans-serif; font-size: 14px; text-decoration: none;" title="Autonomous vehicle">autonomous vehicle</a><span style="background-color: white; color: #222222; font-family: sans-serif; font-size: 14px;">&nbsp;race in which robots navigate between predefined start and finish points. The start and finish points are usually represented as&nbsp;</span><a class="mw-redirect" href="https://en.wikipedia.org/wiki/GPS" style="background-image: none; color: #0b0080; font-family: sans-serif; font-size: 14px; text-decoration: none;" title="GPS">GPS</a><span style="background-color: white; color: #222222; font-family: sans-serif; font-size: 14px;">&nbsp;coordinates and marked by orange traffic cones. In most versions of the competition there are also optional waypoints that the&nbsp;</span><a href="https://en.wikipedia.org/wiki/Robot" style="background-image: none; color: #0b0080; font-family: sans-serif; font-size: 14px; text-decoration: none;" title="Robot">robot</a><span style="background-color: white; color: #222222; font-family: sans-serif; font-size: 14px;">&nbsp;can navigate to in order to earn bonus points. The race is usually conducted on mixed pedestrian terrain which can include obstacles such as park benches, curbs, trees, bushes, hills, people, etc..</span></blockquote>
+
+Unfortunately, there are not many Robomagellan contests happening anymore - but this platform
+is still good for me to work on some outdoor navigation. I actually started building this robot
+in 2012 when Robomagellan was quite popular. The robot was briefly worked on in 2014 and 2018.
+The GitHub contributions view seems to tell this story quite well:<br />
+<br />
+<center>
+<a href="/{{ site.baseurl }}assets/images/2020-04-10-contribution.png" style="margin-left: auto; margin-right: auto;">
+<img border="0" height="120" src="/{{ site.baseurl }}assets/images/2020-04-10-contribution.png" width="400" /></a>
+<i>Contribution timeline for Robomagellan</i>
+</center>
+<br />
+As with any robot that has been developed sporadically over close to a decade, it has gone
+through quite a bit of evolution. You can find some of that evolution in the posts tagged
+<a href="http://www.showusyoursensors.com/search/label/robomagellan">robomagellan</a>,
+but here is a summary:<br />
+<br />
+
+<ul>
+<li>The computer was originally a Turtlebot laptop. It has since been swapped out for an Intel
+NUC. I've previously posted about how I <a href="http://www.showusyoursensors.com/2014/09/intel-nuc-for-ros.html">
+power the NUC off a 12-&gt;19V step up</a>.</li>
+
+<li>The original version of the Etherbotix was designed for this robot. It now uses the later
+Etherbotix design with a plug-in motor driver.</li>
+
+<li>The robot now has an <a href="https://www.adafruit.com/product/746">Adafruit Ultimate
+GPS v3</a>. That may change in the near future, as I've been looking at setting up an RTK
+solution here on the farm.</li>
+
+<li>The robot originally used a small chip-level IMU on the Etherbotix, but now uses a
+<a href="https://www.pololu.com/product/2764">UM-7</a> for better results. That said, I never
+had any luck with the internal UM-7 EKF (even when trying to calibrate it), so there are
+probably plenty of cheaper options out there.</li>
+
+<li>Originally, the main sensor was going to be a UTM-30 on a tilting servo. I've now simplified
+that for an Intel D435 depth sensor.</li>
+
+<li>The robot is still using the original wheels, however I switched from
+<a href="https://www.pololu.com/product/4755">100:1</a> gearboxes to
+<a href="https://www.pololu.com/product/4753">50:1</a> to get more speed (the 100:1 were really
+too much torque, the robot literally could climb a wall).</li>
+</ul>
+
+The robot, as you probably guessed, runs ROS. Specifically I'm using the following packages:
+<br />
+
+<ul>
+<li><a href="https://github.com/mikeferguson/etherbotix_python">etherbotix_python</a> -
+these are my drivers for the Etherbotix board. In addition to controlling the motors and providing
+odometry, this board also acts as a serial-&gt;ethernet adapter for the GPS module. The drivers
+publish the raw NMEA sentences that are sent by the GPS into ROS.</li>
+
+<li><a href="http://wiki.ros.org/um7">um7</a> - this is the driver for the UM7 IMU.</li>
+
+<li><a href="http://wiki.ros.org/nmea_navsat_driver">nmea_navsat_driver</a> - this is used to
+convert NMEA sentences into a sensor_msgs/NavSatFix message.</li>
+
+<li><a href="http://wiki.ros.org/imu_transformer">imu_transformer</a> - is used to translate the
+IMU position into the base_link frame. My IMU is actually mounted "upside down" so this is super
+important.</li>
+
+<li><a href="http://wiki.ros.org/imu_filter_madgwick">imu_filter_madgwick</a> - this is used to
+track the pose of the IMU. Importantly it fuses the magnetometer information, allowing the IMU
+to act like a compass for the global EKF.</li>
+
+<li><a href="http://docs.ros.org/melodic/api/robot_localization/html/index.html">robot_localization</a> - I
+use two instances of the EKF filter. The first fuses the IMU with the wheel odometry in order to get a good
+local odometry frame. The second fuses the IMU, wheel odometry and GPS (processed by the
+navsat_transform_node) into a global odometry.</li>
+
+<li><a href="https://github.com/gareth-cross/rviz_satellite">rviz_satellite</a> - not used on the robot,
+but is an awesome plugin for RVIZ that can download</li>
+</ul>
+
+<b>Global Localization</b>
+<br />
+Setting up the global localization took me a little while to get working. In order to make this process
+easier, I setup my <a href="https://github.com/mikeferguson/robomagellan/blob/master/launch/robot.launch">main launch file</a>
+so that I have an "offline_mode" argument which doesn't launch the drivers. Then I have a
+<a href="https://github.com/mikeferguson/robomagellan/blob/master/launch/bagging/raw_imu_odom_gps.launch">launch file</a>
+for recording bagfiles running only the drivers. I can then change everything in my various pipelines
+when re-running the bagfiles locally. This has been quite useful as I've been tweaking the IMU
+processing pipeline in parallel with adding the global EKF.<br />
+<br />
+<b>Satellite Imagery in RVIZ</b>
+<br />Visualization is always a powerful tool. While RVIZ doesn't have much going for outdoor robots out
+of the box, the <i>rviz_satellite</i> plugin makes it awesome.<br />
+<br />
+
+<center>
+<a href="/{{ site.baseurl }}assets/images/2020-04-10-rviz-satellite.png" style="margin-left: auto; margin-right: auto;">
+<img border="0" height="464" src="/{{ site.baseurl }}assets/images/2020-04-10-rviz-satellite.png" width="640" /></a>
+<i>rviz_satellite overlay with some odometry tracks</i>
+</center>
+
+<br/>
+The one challenging part of rviz_satellite is setting the "Object URI". For an off-road robot, the
+default OpenStreetMaps don't do much. I ended up using MapBox satellite imagery - but getting the
+Object URI right took a bit of digging around. It turns out the correct URI is:
+<br />
+
+<blockquote style="clear: both; text-align: left;">
+<span style="font-family: courier new; font-size: x-small;">
+https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?access_token=XYZ
+</span>
+</blockquote>
+
+Also, free accounts with MapBox are limited to 200k tile requests per month. To avoid using these
+up, you might want to think about running a separate roscore so you can keep RVIZ running even
+when you restart the robot launch file. That said, I've only used 148 tile requests this month
+and have been restarting RVIZ quite a bit.<br />
+<br />
+<b>Next Steps</b>
+<br />
+I just recently got the global localization working - I'm probably going to
+continue to tweak things. The D435 drivers are working pretty reliably now,
+so the next step is mount the D435 on the robot and start integrating the
+data and move onto some basic navigation. I also plan to clean up the IMU
+calibration code I created and get it merged into
+<a href="https://github.com/mikeferguson/robot_calibration">robot_calibration</a>.
