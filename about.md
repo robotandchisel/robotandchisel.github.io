@@ -1,30 +1,40 @@
 ---
 layout: page
-title: About
+title: About Me
 ---
 
 <p class="message">
-  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
+  I'm Michael Ferguson. I make robots do stuff, sometimes the things they do
+  are even interesting. I have extensive experience in designing and working
+  with the electronics, controls, sensors, perception and planning required to
+  bring robotic hardware to life.<br />
+  <br />
+  Formerly CTO at Fetch Robotics, Founder/CTO at Unbounded Robotics and
+  Founder at Vanadium Labs. I've also previously worked at Willow Garage.<br />
+  <br />
+  My robots have won numerous awards at the AAAI Robot Challenge,
+  Trinity Fire Fighting Contest, Canadian National Robot Games, and RoboGames.
 </p>
 
-In the novel, *The Strange Case of Dr. Jeykll and Mr. Hyde*, Mr. Poole is Dr. Jekyll's virtuous and loyal butler. Similarly, Poole is an upstanding and effective butler that helps you build Jekyll themes. It's made by [@mdo](https://twitter.com/mdo).
+# Experience
+See my [LinkedIn](https://www.linkedin.com/in/mfergs/) for more details and history.
 
-There are currently two themes built on Poole:
+ * Cobalt Robotics Inc (2020-)
+ * Botnuvo Inc (2019-2020)
+ * OLogic Inc (2018-2020)
+ * Fetch Robotics (2014-2017)
+ * Unbounded Robotics (2013-2014)
+ * Willow Garage (2011-2013)
 
-* [Hyde](http://hyde.getpoole.com)
-* [Lanyon](http://lanyon.getpoole.com)
+# Publications and Patents
+See my profile on [Google Scholar](https://scholar.google.com/citations?user=EPzcL-IAAAAJ&hl=en)
 
-Learn more and contribute on [GitHub](https://github.com/poole).
-
-## Setup
-
-Some fun facts about the setup of this project include:
-
-* Built for [Jekyll](http://jekyllrb.com)
-* Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
-* Coded with [Sublime Text 2](http://sublimetext.com), an amazing code editor
-* Designed and developed while listening to music like [Blood Bros Trilogy](https://soundcloud.com/maddecent/sets/blood-bros-series)
-
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo).
-
-Thanks for reading!
+# Awards and Such
+  * First Place, AAAI Small Scale Manipulation Challenge. August 2011.
+  * Second Place, Trinity Fire Fighting Competition, Walker Division, April 2010.
+  * First Place, Canadian National Robot Games, Walker Challenge. November 2009.
+  * First Place, Robogames, Mech Warfare. June 2009.
+  * Second Place, Robogames, Fire Fighting. June 2009.
+  * First Place, Trinity Fire Fighting Competition, Senior Division. April 2009.
+  * First Place, Trinity Fire Fighting Competition, Cost Effective Award. April 2009.
+  * First Place, Canadian National Robot Games, Fire Fighting. November 2008.
