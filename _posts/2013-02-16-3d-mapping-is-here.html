@@ -1,0 +1,58 @@
+---
+layout: post
+title: 3D Mapping is Here
+description: There are a number of 3d-SLAM applications now available in ROS.
+date: '2013-02-16T18:18:00.001-05:00'
+author: Michael Ferguson
+tags:
+- slam
+- robots
+- ros
+modified_time: '2013-02-16T18:26:20.607-05:00'
+thumbnail: http://2.gvt0.com/vi/YE9eKgek5pI/0.jpg
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-2966094301632682387
+blogger_orig_url: http://www.showusyoursensors.com/2013/02/3d-mapping-is-here.html
+---
+
+It's just about 2 years since Willow Garage ran the <a href="http://www.ros.org/wiki/openni/Contests/ROS%203D">ROS 3D</a>
+contest to see what the community could come up with for Kinect/OpenNI applications. The full results are
+<a href="http://www.ros.org/news/2011/02/ros-3d-contest-the-results.html">here</a>. The winner in the "most useful"
+category was a 3D SLAM application called RGBDSLAM. I remember trying to get it running, I eventually did,
+but it was not easy.<br />
+<br />
+Just this past week I saw a post from the guys over at CCNY, showing off their new
+<a href="http://ros.org/wiki/ccny_rgbd">visual odometry and keyframe (offiline) mapping system</a>. I decided to
+give it a try... and it worked out of the box no problem. Here's a video CCNY posted:<br />
+<br />
+<center>
+<object codebase="https://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" data-thumbnail-src="http://2.gvt0.com/vi/YE9eKgek5pI/0.jpg" height="266" width="320">
+<param name="movie" value="https://www.youtube.com/v/YE9eKgek5pI&fs=1&source=uds" />
+<param name="bgcolor" value="#FFFFFF" />
+<param name="allowFullScreen" value="true" />
+<embed width="320" height="266"  src="https://www.youtube.com/v/YE9eKgek5pI&fs=1&source=uds" type="application/x-shockwave-flash" allowfullscreen="true"></embed>
+</object>
+</center>
+<br />
+A few days later I came across a video (and <a href="https://code.google.com/p/rtabmap/">code with ROS wrappers</a>)
+from IntRoLab at Sherbrooke:<br />
+<br />
+<center>
+<object codebase="https://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" data-thumbnail-src="http://2.gvt0.com/vi/AMLwjo80WzI/0.jpg" height="266" width="320">
+<param name="movie" value="https://www.youtube.com/v/AMLwjo80WzI&fs=1&source=uds" />
+<param name="bgcolor" value="#FFFFFF" />
+<param name="allowFullScreen" value="true" />
+<embed width="320" height="266"  src="https://www.youtube.com/v/AMLwjo80WzI&fs=1&source=uds" type="application/x-shockwave-flash" allowfullscreen="true"></embed>
+</object>
+</center>
+<br />
+I also have noticed that <a href="http://www.ros.org/wiki/rgbdslam">RGBDSLAM</a> is still getting updates and
+documentation revisions, so it is still getting active improvements.<br />
+<br />
+I'm thinking it would be really cool to put together an application that turn these 3d maps into 2d maps usable
+by the ROS navigation stack. Robots like <a href="http://turtlebot.com/">TurtleBot</a> can typically localize
+against a map with just their Kinect-like sensor, but building maps has traditionally been tough due to the
+lack of features visible in a 57-degree wide "fake-laserscan".<br />
+<br />
+This is really awesome stuff for the robotics community -- we have at least 3 different 3D mapping applications
+released into the ROS ecosphere. Are there more out there that anyone knows of? If you've used these apps,
+feel free to comment!

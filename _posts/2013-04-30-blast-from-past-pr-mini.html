@@ -1,0 +1,104 @@
+---
+layout: post
+title: 'Blast from the Past: PR-MINI'
+description: 'A look at the predecessor to Maxwell, a mini version of the PR-2'
+date: '2013-04-30T05:57:00.000-04:00'
+author: Michael Ferguson
+tags:
+- blast-from-the-past
+- robots
+- ros
+modified_time: '2020-04-05T13:20:17.643-04:00'
+thumbnail: https://2.bp.blogspot.com/-L1hCcEuA2co/UX-Q33QgaVI/AAAAAAAAAX4/8JlU1nzKl6Y/s72-c/prmini.jpg
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-4541354870056842955
+blogger_orig_url: http://www.showusyoursensors.com/2013/04/blast-from-past-pr-mini.html
+---
+
+I was recently updating my personal website when I realized that I had some projects that had never
+seen the light of day. This post is about one of these old projects that I never showed off:<br />
+
+<center>
+<a href="/{{ site.baseurl }}assets/images/2013-04-30-prmini.jpg" style="margin-left: 1em; margin-right: 1em;">
+<img src="/{{ site.baseurl }}assets/images/2013-04-30-prmini.jpg" width="60%" /></a>
+</center>
+
+Back in late summer of 2010 I started to build a miniature PR2. It was a 60% scale model of the PR2
+arms, base, and torso. The base was differential drive instead of the more expensive casters found
+in the PR2. I reused the motors and 6" wheels that had previously been used in REX, one of my first
+large robots. For this robot, the frame was primarily 8020 Aluminum rail covered/connected with
+laser-cut ABS and the occasional sheet metal bracket:<br />
+
+<center>
+<a href="/{{ site.baseurl }}assets/images/2013-04-30-base-assembly-2.jpg" style="margin-left: 1em; margin-right: 1em;">
+<img src="/{{ site.baseurl }}assets/images/2013-04-30-base-assembly-2.jpg" width="60%" /></a>
+
+<a href="/{{ site.baseurl }}assets/images/2013-04-30-assembly-2.jpg" style="margin-left: 1em; margin-right: 1em;">
+<img src="/{{ site.baseurl }}assets/images/2013-04-30-assembly-2.jpg" width="60%" /></a>
+</center>
+
+The head sported a pan/tilt, which used two AX-12s for tilting and a third for pan. It had two webcams
+for stereo, and was designed with enough space between the web cams to install a Videre short-range
+stereo camera, although I never got around to that:<br />
+
+<center>
+<a href="/{{ site.baseurl }}assets/images/2013-04-30-prmini-head.jpg" style="margin-left: 1em; margin-right: 1em;"
+<img src="/{{ site.baseurl }}assets/images/2013-04-30-prmini-head.jpg" width="240" /></a>
+</center>
+
+The arms were pretty massive, nearly 0.6 meters long, with 7 servos. The shoulder pan, forearm roll,
+wrist pitch and wrist roll joints were AX-12s. The shoulder lift joint was an RX-64, while the elbow
+and upper arm roll joints were powered by (admittedly, under-powered) RX-24F servos:<br />
+
+<center>
+<a href="/{{ site.baseurl }}assets/images/2013-04-30-prmini-strong.jpg" style="margin-left: 1em; margin-right: 1em;">
+<img src="/{{ site.baseurl }}assets/images/2013-04-30-prmini-strong.jpg" width="400" /></a>
+</center>
+
+The torso had a 12" throw linear actuator, and used expensive and heavy 8020 parts to form the
+bearings and rail:<br />
+
+<center>
+<a href="/{{ site.baseurl }}assets/images/2013-04-30-prmini-side.jpg" style="margin-left: 1em; margin-right: 1em;">
+<img src="https://4.bp.blogspot.com/-CIIKvBHj4MY/UX-Sut76FyI/AAAAAAAAAYk/dcjlnNHRR5g/s320/prmini-side.jpg" width="60%" /></a>
+</center>
+
+The entire thing was controlled by a laptop, tucked into the base, and an ArbotiX prototype with
+integrated motor drivers. When dealing with robots this big and heavy, an E-stop is a must.
+The wiring on the back panel was made somewhat tidy, and covered with Lexan shells:<br />
+
+<center>
+<a href="/{{ site.baseurl }}assets/images/2013-04-30-prmini-wiring.jpg" style="margin-left: 1em; margin-right: 1em;">
+<img src="/{{ site.baseurl }}assets/images/2013-04-30-prmini-wiring.jpg" width="60%" /></a>
+
+<a href="/{{ site.baseurl }}assets/images/2013-04-30-prmini-back.jpg" style="margin-left: 1em; margin-right: 1em;">
+<img src="/{{ site.baseurl }}assets/images/2013-04-30-prmini-back.jpg" width="60%" /></a>
+</center>
+
+I went as far as moving arms around under ROS, and tuning in the navigation stack a bit. The code
+developed for this robot later became the <a href="http://github.com/vanadiumlabs/arbotix_ros">arbotix_ros</a>
+drivers:<br />
+
+<center>
+<a href="/{{ site.baseurl }}assets/images/2013-04-30-rviz.png" style="margin-left: 1em; margin-right: 1em;">
+<img src="/{{ site.baseurl }}assets/images/2013-04-30-rviz.png" width="60%" /></a>
+</center>
+
+A couple of things did this robot in. First off, it was really heavy (45lbs) and hard to easily
+transport around (which I was doing a lot of back then). Transport was quite funny as well,
+because the arms loved to dangle in every possible direction, leading to the "bubble-wrap straight jacket":<br />
+
+<center>
+<a href="/{{ site.baseurl }}assets/images/2013-04-30-assembly-5.jpg" style="margin-left: 1em; margin-right: 1em;">
+<img src="/{{ site.baseurl }}assets/images/2013-04-30-assembly-5.jpg" width="240" /></a>
+</center>
+
+Second, the Kinect came out shortly afterwards, making the sensor suite pretty lacking, and looked
+ludicrous trying to strap a Kinect on this robot. A number of lessons learned are pretty clear
+in Maxwell, which was built shortly after this robot sacrificed his arms. Oh, and since I couldn't
+find a reason to slip this picture into the story above, here is a view of the Autodesk
+Inventor CAD model:<br />
+
+<center>
+<a href="/{{ site.baseurl }}assets/images/2013-04-30-Pr-Mini-Tuck.png" style="margin-left: 1em; margin-right: 1em;">
+<img src="/{{ site.baseurl }}assets/images/2013-04-30-Pr-Mini-Tuck.png" width="60%" /></a>
+</center>
