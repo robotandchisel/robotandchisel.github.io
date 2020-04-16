@@ -1,0 +1,32 @@
+---
+layout: post
+title: Sensors Hate Dark Surfaces
+description: A look at how laser scanners and Kinects interact with our surroundngs.
+date: '2011-03-20T16:34:00.004-04:00'
+author: Michael Ferguson
+tags:
+- maxwell
+- robots
+- ros
+modified_time: '2011-03-20T16:42:07.409-04:00'
+thumbnail: http://4.bp.blogspot.com/-h3ASpGNXf_k/TYZljwtkclI/AAAAAAAAAN0/I6LmfoU5Hlk/s72-c/maxmapbuilding.png
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-1388895365444689790
+blogger_orig_url: http://www.showusyoursensors.com/2011/03/sensors-hate-dark-surfaces.html
+---
+
+Previously I've mentioned my issues with the low cost Hokuyo URG-04LX-UG01, even going so far as to say
+that the laser in the Neato XV-11 robot was better. One of the major differences between Maxwell and
+his little Armadillo cousin is that on Maxwell I have mounted the laser about 6" off the ground, versus
+the 2" of the Armadillo. Interestingly, this has had a huge impact on performance -- our walls here in
+the lab are mostly white, and the laser works much better on the walls than the black base trim:<br />
+
+<a href="/{{ site.baseurl }}assets/images/2011-03-20-rviz.png">
+<img style="display:block; margin:0px auto 10px; text-align:center;width: 320px; height: 200px;" src="/{{ site.baseurl }}assets/images/2011-03-20-rviz.png"/></a><br />
+
+I've also found that the same black paint is on our doors, and wreaks havoc on the Kinect. The image
+below shows the RGB point cloud -- this is a Sunday, both doors are shut, yet invisible:<br />
+
+<a href="/{{ site.baseurl }}assets/images/2011-03-20-rviz2.png">
+<img style="display:block; margin:0px auto 10px; text-align:center;width: 320px; height: 214px;" src="/{{ site.baseurl }}assets/images/2011-03-20-rviz2.png" /></a><br />
+
+Luckily, it looks like the laser picks up the doors when close, so I won't have to worry about Maxwell driving through an invisible doorway.

@@ -1,0 +1,30 @@
+---
+layout: post
+title: Maxwell Gets an Emergency Stop
+date: '2011-03-21T23:30:00.004-04:00'
+description: I added a big red panic button to Maxwell.
+author: Michael Ferguson
+tags:
+- maxwell
+- robots
+modified_time: '2011-03-23T10:58:18.295-04:00'
+thumbnail: http://2.bp.blogspot.com/-JZUcuEQ7DHI/TYgZPuUt31I/AAAAAAAAAOM/SoQngH30-0E/s72-c/maxwell1.jpg
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-4765535288518481629
+blogger_orig_url: http://www.showusyoursensors.com/2011/03/maxwell-gets-emergency-stop.html
+---
+
+I had ordered the emergency stop when I bought the first round of parts for Maxwell, but I hadn't
+actually designed a location to attach it to on the robot. This weekend I rebuild a number of
+components on Maxwell, installing a new base, upgrading the torso wiring harnesses, and installing
+the E-stop (seen behind the arm, protected by the torso column):<br />
+<br />
+<a href="/{{ site.baseurl }}assets/images/2011-03-21-estop.jpg">
+<img style="display:block; margin:0px auto 10px; text-align:center;width: 300px; height: 400px;" src="/{{ site.baseurl }}assets/images/2011-03-21-estop.jpg" /></a><br />
+
+The E-stop is from <a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?lang=en&site=US&WT.z_homepage_link=hp_go_button&KeyWords=a22e-m-01&x=0&y=0">Digikey</a>
+and is the type it latches when pressed, such that you need to twist it to release and restart the
+current flowing. <br />
+<br />
+Maxwell's ArbotiX is powered off the USB connection, allowing all 12V power to run through the E-Stop.
+Pressing the E-Stop then stops all the motors and servos, while the ArbotiX continues to run and
+interact with the PC. On releasing the E-stop, everything comes back to life nicely.

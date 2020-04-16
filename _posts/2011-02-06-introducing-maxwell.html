@@ -1,0 +1,79 @@
+---
+layout: post
+title: Introducing Maxwell
+description: Maxwell is my latest attempt at a lowcost, human-scale mobile manipulator using an ArbotiX and ROS.
+date: '2011-02-06T19:49:00.015-05:00'
+author: Michael Ferguson
+tags:
+- maxwell
+- arbotix
+- robots
+- ros
+modified_time: '2011-02-13T16:13:01.653-05:00'
+thumbnail: http://3.bp.blogspot.com/_qmthA_fNJ-Y/TU9NC83aBiI/AAAAAAAAANU/oukkChrQO68/s72-c/sm_maxwell-build-6.jpg
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-8105703930271364985
+blogger_orig_url: http://www.showusyoursensors.com/2011/02/introducing-maxwell.html
+---
+
+<a href="/{{ site.baseurl }}assets/images/2011-02-06-maxwell.jpg">
+<img style="float: right; margin: 0pt 0pt 10px 10px; width: 240px; height: 320px;" src="/{{ site.baseurl }}assets/images/2011-02-06-maxwell.jpg"/></a>
+
+I've been working hard to finish up (at least from a mechanical and electrical standpoint) my latest
+robot for a demo day tomorrow. I thought I would post a few details here.<br />
+<br />
+Maxwell is my latest attempt at a lowcost, human-scale mobile manipulator using an ArbotiX and ROS.
+The design guidelines were pretty straight forward: it needed an arm that could manipulate things
+on a table top, a Kinect for primary sensor on the head, and a mobile base that kept all that stuff
+upright. Additionally, I wanted the robot to be easy to transport and/or ship.<br />
+<br />
+Maxwell sports a larger 16x16" version Armadillo base with motors that should support a 20lb payload
+at speeds up to 0.5m/s. Not shown in these images is a Hokuyo URG-04LX-UG01 which will be mounted
+on the base, just in front of the column. The head has two AX-12 servos for pan and tilt.
+Eventually, the head will include a shotgun microphone.<br />
+
+<br />
+<a href="/{{ site.baseurl }}assets/images/2011-02-06-base.jpg">
+<img style="display: block; margin: 0px auto 10px; text-align: center; width: 320px; height: 240px;" src="/{{ site.baseurl }}assets/images/2011-02-06-base.jpg"/></a>
+
+Maxwell's arm is constructed from 2 EX-106 (shoulder lift and elbow flex), 2RX-64 (shoulder pan and wrist flex), and and 3 AX-12s (one for wrist roll, and two to form a gripper). In all honesty, it only needs the one EX-106 in the shoulder, but I didn't have any brackets that fit the RX-64 at the moment. The actual gripper fingers are temporary, I have much better ones in the works.<br /><br />
+<a href="/{{ site.baseurl }}assets/images/2011-02-06-arm.jpg">
+<img style="display: block; margin: 0px auto 10px; text-align: center; width: 240px; height: 320px;" src="/{{ site.baseurl }}assets/images/2011-02-06-arm.jpg" /></a>
+
+His central column consists of 3 sections of 8020 aluminum support, allowing all pieces to break
+into lengths under 20" long. This allows Maxwell to be disassembled and put into a reasonable size
+Pelican case for shipping. It only takes about 5 minutes to break down or setup Maxwell, as you
+only have to loosen 6 screws. Eventually, I'll have nicely cut foam, but for now I've hastily
+packed Maxwell for his journey to the state capital tomorrow:<br />
+<br />
+<a href="/{{ site.baseurl }}assets/images/2011-02-06-case.jpg">
+<img style="display: block; margin: 0px auto 10px; text-align: center; width: 320px; height: 240px;" src="/{{ site.baseurl }}assets/images/2011-02-06-case.jpg"/></a>
+
+On the software side, Maxwell has been a driving force behind the development of the ArbotiX
+stack v0.4.0 release. I'll be posting video shortly of smooth arm interpolation being done by
+the ArbotiX and ROS wrappers (I'm still fighting a bit with IK issues), in the meantime, here
+is a view of Maxwell's URDF-based robot model in RViz:
+<br />
+<a href="/{{ site.baseurl }}assets/images/2011-02-06-rviz.png">
+<img style="display: block; margin: 0px auto 10px; text-align: center; width: 320px; height: 180px;" src="/{{ site.baseurl }}assets/images/2011-02-06-rviz.png"/></a>
+
+All of the configuration and launch files are now working, however I need to work on a
+calibration routine for the Kinect positioning, there is a bit of error somewhere in the
+head that causes the point cloud not to be aligned with the URDF model of the base when
+visualized in RViz (I unfortunately did not grab a screen capture of it, that will have
+to be a later post).<br />
+<br />
+So what will Maxwell be up to? His first task is going to hopefully be competing in the
+AAAI Small Scale Manipulation Challenge. Once arm IK is functioning, and the kinect-&gtarm
+transformation has been corrected, we'll be working on recognizing and moving chess pieces.
+After the AAAI event, he'll probably get an upgrade for a vertical lift on the arm
+(similar to the one on
+<a href="http://www.ros.org/news/2010/03/robots-using-ros-georgia-techs-assistive-robots.html">Georgia Tech's EL-E</a>)
+and possibly a conversion to two more anthropomorphic arms. Speaking of EL-E, I couldn't
+help but replicate that
+<a href="http://www.ros.org/news/resources/2010/ele.jpg">classic pose</a>:<br /><br />
+<a href="/{{ site.baseurl }}assets/images/2011-02-06-ele.jpg">
+<img style="display: block; margin: 0px auto 10px; text-align: center; width: 240px; height: 320px;" src="/{{ site.baseurl }}assets/images/2011-02-06-ele.jpg"/></a>
+
+Another great pose:<br />
+<a href="/{{ site.baseurl }}assets/images/2011-02-06-door.jpg">
+<img style="display: block; margin: 0px auto 10px; text-align: center; width: 240px; height: 320px;" src="/{{ site.baseurl }}assets/images/2011-02-06-door.jpg"/></a>
