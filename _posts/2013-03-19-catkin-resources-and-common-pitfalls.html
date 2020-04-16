@@ -1,0 +1,80 @@
+---
+layout: post
+title: Catkin Resources and Common Pitfalls
+date: '2013-03-19T17:22:00.000-04:00'
+author: Michael Ferguson
+tags:
+- ros
+modified_time: '2013-09-29T16:46:50.637-04:00'
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-8999525494120077195
+blogger_orig_url: http://www.showusyoursensors.com/2013/03/catkin-resources-and-common-pitfalls.html
+---
+
+ROS has recently introduced a new buildsystem, called catkin, which is a replacement for rosbuild.
+One of the greatest strengths of this new buildsystem is that it is pure CMake, which makes it
+highly portable, standard, and awesome. However, one of the biggest weakenesses of this new
+buildsystem is... well, it's entirely CMake, so it is a steep learning curve at times, and easily
+riddled with bugs.<br />
+<br />
+In typical ROS fashion, there are a number of tutorials on catkin
+(<a href="http://ros.org/wiki/catkin/Tutorials">http://ros.org/wiki/catkin/Tutorials</a>).
+However, there really is a ton of info that is hard to compress into a small set of tutorials.<br />
+
+<h4>The rising tide</h4>
+You'll often hear the term "wet" and "dry" for catkin versus rosbuild. The important take away here
+is that it is indeed a <i>rising water level</i>. In other words, "wet" (catkin) packages cannot
+depend on "dry" stuff. This means you have to wait (or jump in and help) on any rosbuild package
+that you depend on. The quickest way to see what is catkinized is to look at
+<a href="http://ros.org/debbuild/groovy.html">http://ros.org/debbuild/groovy.html</a>. If it says
+wet, all good. If something is listed as dry there, it may still be catkinized in preparation for
+hydro, but only the dry version went into groovy, so check the source repo for a hydro-devel
+branch or similar.<br />
+
+<h4>How is the workflow different?</h4>
+Catkin moves ROS towards a more standard Filesystem Hierarchy System (FHS) as detailed in
+<a href="http://ros.org/reps/rep-0122.html">REP 122</a> as well as introducing out-of-source
+builds and install targets. Understanding this FHS is key to proper catkin package design,
+especially the install step.<br />
+
+<h4>How is a catkin package different from a rosmake one?</h4>
+In rosmake, we had packages and stacks. In catkin, there are only packages. New catkin packages
+have a package.xml instead of a manifest.xml and there are a number of changes to the set of
+available tags. Especially different is that dependencies are all now of one time (no longer
+are packages/stacks/rosdeps treated differently), but also you specify whether dependencies
+are needed at build or run time. So what about stacks? Well, they were really nothing more
+than a nice way to group a series of packages together. In catkin, this is handled by a
+metapackage. A metapackage has only a package.xml, with <i>rundepends</i> tags for each
+package in the old stack. Details of catkin's pacakge.xml can be found on
+<a href="http://ros.org/wiki/catkin/package.xml">http://ros.org/wiki/catkin/package.xml</a>.<br />
+<br />
+In addition to package.xml, CMakeLists.txt still exists, but is basically completely different
+looking. If you are using Python for anything other than rosrunned-scripts, then you will almost
+need to create a setup.py. There is a
+<a href="http://ros.org/wiki/catkin/migrating_from_rosbuild">migration guide</a> available on the
+wiki.<br />
+
+<h4>Long Live Roslib. Roslib is dead.</h4>
+One of the major changes now is that with the new FHS, catkin-based Python scripts no longer need
+to do a "import roslib; roslib.load_manifest()" as the Python path already includes all your
+installed catkin-based packages. This also means it's easier to test stuff by starting a Python
+shell and importing just about anything. Just be sure to include the appropriate setup.bash file
+to get the paths right.<br />
+<br />
+One potential pitfall of this is that if you used to just throw all your python source into
+"package_name/src", you'll want to start doing "package_name/src/package_name" instead (and be
+sure to have an __init__.py file in there). This makes the setup.py script dead simple, and also
+ensures you get a real "python package" with the same name as your "catkin package".
+
+<h4>Further Reading</h4>
+As with any new system, there are a number of questions that arise which maybe the docs don't
+fully cover. Here are a couple really good ones from ROS Answers over the last few days:
+<ul>
+<li><a href="http://answers.ros.org/question/58498/what-is-the-purpose-of-catkin_depends/">What is the purpose of CATKIN_DEPENDS?</a></li>
+<li><a href="http://answers.ros.org/question/57968/where-is-catkin_add_nosetests-documented/">Where is catkin_add_nosetests documented?</a></li>
+<li><a href="http://answers.ros.org/question/59163/how-do-i-install-a-python-module-with-a-different-name-than-the-catkin-package/">How do I install a python module with a different name than the catkin package?</a></li>
+<li><a href="http://answers.ros.org/question/59648/catkin-metapackage-now-requires-cmakeliststxt/">http://answers.ros.org/question/59648/catkin-metapackage-now-requires-cmakeliststxt/</a></li>
+<li><a href="http://answers.ros.org/question/60994/pkg_name_generate_messages_cpp-vs-pkg_name_gencpp/">http://answers.ros.org/question/60994/pkg_name_generate_messages_cpp-vs-pkg_name_gencpp/</a></li>
+<li><a href="http://answers.ros.org/question/61027/catkin_make-fails/">http://answers.ros.org/question/61027/catkin_make-fails/</a></li>
+<li><a href="http://answers.ros.org/question/80936/why-are-there-entries-in-rosdistro-for-ros-independent-libraries/">http://answers.ros.org/question/80936/why-are-there-entries-in-rosdistro-for-ros-independent-libraries/</a></li>
+<li><a href="http://answers.ros.org/question/84616/help-understanding-system-and-package-dependencies-with-rosbuild-and-catkin/">Understanding system and package dependencies</a></li>
+</ul>

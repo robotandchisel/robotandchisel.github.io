@@ -1,0 +1,38 @@
+---
+layout: post
+title: 'Update: ROS on Arduino'
+description: There are a number of ways to connect your hardware to ROS.
+date: '2013-03-15T02:45:00.000-04:00'
+author: Michael Ferguson
+tags:
+- arbotix
+- robots
+- ros
+modified_time: '2013-03-15T02:45:27.530-04:00'
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-1391103725757308062
+blogger_orig_url: http://www.showusyoursensors.com/2013/03/update-ros-on-arduino.html
+---
+
+It's been about 18 months since ROSserial was first released. Since then, ROS has
+undergone a number of changes, including a new build system, new message generators,
+and more. Unfortunately, this massively broke ROSserial.<br />
+<br />
+Over the past few weeks, I've spent a bit of time fixing up ROSserial to use the new
+ROS build system, catkin. I've updated things so that message generation *mostly*
+works. I'm sure there are still a number of bugs in there, but it's now mostly working
+again and has just been released into Groovy as version 0.4.3 (currently on shadow-fixed,
+should be in the public ROS debian repos in a few days).<br />
+<br />
+Recently, ROSserial has been moved to github like so much of ROS. Across the board,
+the move to github appears to have greatly increased community participation.
+Speaking of the ROS community, there is another ROS on Arduino package recently
+released: <a href="http://ros.org/wiki/ros_arduino_bridge">ros_arduino_bridge</a>.
+Patrick Goebel of <a href="http://www.pirobot.org/">PiRobot.org</a> and the
+Homebrew Robotics Club recently released this package which is primarily aimed
+at controlling a differential drive base. I've frequently heard people ask about
+running a diff-drive base using ROSserial, but the biggest problem is support for
+the massive nav_msgs/odometry message. This new package doesn't have the
+flexibility of rosserial, but definitely gets the job done for a mobile base.<br />
+<br />
+Finally, ArbotiX drivers have had some minor updates and have been moved to catkin,
+and are released. Version 0.8.1 should be in the next set of public ROS debians.

@@ -1,0 +1,43 @@
+---
+layout: post
+title: Move'n'It
+description: A first look at MoveIt and Maxwell gets another degree of freedom.
+date: '2013-02-25T21:00:00.000-05:00'
+author: Michael Ferguson
+tags:
+- moveit
+- maxwell
+- ros
+modified_time: '2013-02-26T03:27:51.039-05:00'
+thumbnail: http://2.bp.blogspot.com/-dQ7B8Mxnbrs/USxPpae02nI/AAAAAAAAAVk/ZKjeBj3rGJI/s72-c/maxwell-6dof.jpg
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-2659911504389722698
+blogger_orig_url: http://www.showusyoursensors.com/2013/02/movenit.html
+---
+
+I've recently gotten a chance to play with MoveIt -- a new manipulation framework for ROS. MoveIt is the
+replacement for arm_navigation in ROS Groovy and later. Like arm_navigation, MoveIt allows you to plan,
+in collision free space, the movement of your robot arm. However, unlike arm_navigation, it was designed
+from the ground up as a series of C++ libraries, with thin ROS wrappers, meaning it is far more extensible.<br />
+<br />
+In the past, I had wrapped arm_navigation's move_group with the simple_arm_server package, which allows
+5-DOF arms, like Maxwell's to work with MoveIt. This time, I've taken the easy way out and just added a
+6th degree of freedom, an upper arm roll:<br />
+<br />
+<center>
+<img src="/{{ site.baseurl }}assets/images/2013-02-25-maxwell-6dof.jpg" width="75%" />
+</center>
+<br />
+I had one extra MX-64 around, and printed a couple of brackets on a MakerBot Replicator (files are posted on
+<a href="http://www.thingiverse.com/thing:54586">Thingiverse</a>). With this extra servo, all of MoveIt pretty
+much works out of the box. Once I wanted to control the real robot, I ran into a bit of issue. While I've
+heard that you can use the PR2 controller manager plugin, I couldn't quite get the settings correct.
+I therefore created a simpler version, which you can find in
+<strike><a href="http://github.com/mikeferguson/maxwell">Maxwell's github</a> in the simple_moveit_plugins package</strike>
+<i>(Update: the simple_controller_manager is now a part of MoveIt)</i>.
+Here's a quick shot of RVIZ with the MoveIt plugin:<br />
+<br />
+<center>
+<img src="/{{ site.baseurl }}assets/images/2013-02-25-moveit-rviz.png" width="75%" />
+</center>
+<br />
+While MoveIt is still version 0.3.20 something, it's actually pretty awesome.
