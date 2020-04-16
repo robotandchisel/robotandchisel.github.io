@@ -1,0 +1,76 @@
+---
+layout: post
+title: Reviving Maxwell (and this blog)
+description: After a five year hiatus, the blog is back. So is Maxwell.
+date: '2020-04-01T13:03:00.002-04:00'
+author: Michael Ferguson
+tags:
+- maxwell
+- robots
+- ros
+modified_time: '2020-04-01T13:03:58.675-04:00'
+thumbnail: https://1.bp.blogspot.com/-fQiQUHuOo54/XoTIPxF_uVI/AAAAAAAADfA/sm41nrbgk0MDPT4Z6RlCInC-W7MA_jOJwCK4BGAYYCw/s72-c/IMG_2370.jpeg
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-3423848633717128755
+blogger_orig_url: http://www.showusyoursensors.com/2020/04/reviving-maxwell-and-this-blog.html
+---
+
+It has been over 5 years since I last posted on this blog - but now seems like a great time
+to start posting things again!<br />
+<br />
+We will start with an update on Maxwell, my longest running robot, which originally started
+as my Masters project at SUNY Albany. He's 9 years old now, although the only original parts
+are the laser cut base, the drive motors, drive wheels, and the the neck:
+
+<center>
+<a href="/{{ site.baseurl }}assets/images/2020-04-01-maxwell.jpg" style="margin-left: 1em; margin-right: 1em;">
+<img src="/{{ site.baseurl }}assets/images/2020-04-01-maxwell.jpg" width="60%" /></a>
+</center>
+
+I don't expect there are many hobby robots out there with such a long lifespan. Here is a
+summary of Maxwell's evolution:<br />
+<br />
+<ul>
+<li>January 2011 - <a href="http://www.showusyoursensors.com/2011/02/introducing-maxwell.html">Maxwell is created</a>
+with an Arbotix, a series of EX-106 and RX-64 servos, Hokuyo URG-04LX-UG01 laser, a Kinect, and a massive Dell laptop.</li>
+<li>March 2011 - <a href="http://www.showusyoursensors.com/2011/03/maxwell-gets-emergency-stop.html">Maxwell gets an
+Emergency Stop</a>.</li>
+<li>August 2011 - Maxwell wins the AAAI Small Scale Manipulation Challenge.</li>
+<li>December 2011 - <a href="http://www.showusyoursensors.com/2011/12/maxwell-finally-gets-vertical-arm-lift.html">Maxwell
+gets a vertical lift</a> so he can reach the ground and the table. Around the same time, the camera got upgraded to an
+Asus Xtion.</li>
+<li>Summer 2012 - Maxwell gets upgraded to a MX series servos. I also wrote a
+<a href="https://www.servomagazine.com/magazine/contributor/michael_ferguson">three part article</a> about this in SERVO
+magazine.</li>
+<li>Summer 2013 - Maxwell gets upgraded to use MoveIt.</li>
+<li>Fall 2014 - Maxwell gets upgraded to and
+<a href="http://www.showusyoursensors.com/2014/09/intel-nuc-for-ros.html">Intel NUC</a> and the Etherbotix controller,
+an ARM-based, Ethernet-connected replacement for the ArbotiX I was originally using. I also created lots of
+<a href="https://github.com/mikeferguson/maxwell/tree/melodic-devel/maxwell/docs">documentation</a> so that Alan
+Downing from HBRC could build a Maxwell clone (ROSwell)</li>
+<li>Spring 2018 - Maxwell gets a parallel-jaw gripper (more on this below).</li>
+<li>Spring 2020 - lots of updates.</li>
+</ul>
+
+The first of the new updates is migrating Maxwell to ROS Melodic. The drivers are all updated, and all the warnings
+have been fixed. I've built a map of the house here in NH (and
+<a href="https://github.com/ros-perception/slam_karto/issues/24">fixed a major bug</a> in slam_karto in the process):<br />
+<br />
+<center>
+<a href="/{{ site.baseurl }}assets/images/2020-04-01-map.png">
+<img src="/{{ site.baseurl }}assets/images/2020-04-01-map.png" width="60%" /></a>
+</center>
+
+I've also updated Maxwell to the PS4 controller, since the PS3 doesn't work so great in newer versions of Linux
+(this will be the subject of a later post).<br />
+<br />
+While the parallel-jaw gripper was physically installed on Maxwell some time ago, and the URDF had been updated,
+I never actually finished the software to control the gripper -- that's the project for later this week. In the
+meantime, here are some close up shots of the gripper:<br />
+
+<center>
+<a href="/{{ site.baseurl }}assets/images/2020-04-01-gripper.jpg" style="margin-left: 1em; margin-right: 1em;">
+<img src="/{{ site.baseurl }}assets/images/2020-04-01-gripper.jpg" width="60%" /></a>
+
+<a href="/{{ site.baseurl }}assets/images/2020-04-01-gripper2.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;">
+<img src="/{{ site.baseurl }}assets/images/2020-04-01-gripper2.jpg" width="60%" /></a>
+</center>

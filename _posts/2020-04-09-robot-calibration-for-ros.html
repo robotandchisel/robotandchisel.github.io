@@ -1,0 +1,128 @@
+---
+layout: post
+title: Robot Calibration for ROS
+date: '2020-04-09T09:38:00.001-04:00'
+description: Calibration is essential for robots. I cover the usage and evolution of my robot_calibration ROS package.
+author: Michael Ferguson
+tags:
+- calibration
+- national-robotics-week
+- robots
+- ros
+modified_time: '2020-04-09T09:38:39.301-04:00'
+thumbnail: https://2.bp.blogspot.com/-UKCHehgxNow/Xo8e0HtIHYI/AAAAAAAADio/brZIQCvAygoF2ayTM2IjJ25lE7HELfT3QCK4BGAYYCw/s72-c/Screen%2BShot%2B2020-04-09%2Bat%2B9.08.28%2BAM.png
+blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-6984830498794942287
+blogger_orig_url: http://www.showusyoursensors.com/2020/04/robot-calibration-for-ros.html
+---
+
+<i>This is day 5 of my National Robotics Week blog marathon.
+<a href="/{{ site.baseurl }}tag/national-robotics-week/">See the full set of posts here.</a></i>
+<br />
+<br />
+<center>
+<a href="/{{ site.baseurl }}assets/images/2020-04-09-calibration.png">
+<img border="0" src="/{{ site.baseurl }}assets/images/2020-04-09-calibration.png" width="600" /></a>
+<i>Uncalibrated vs. Calibrated</i></center>
+<br />
+Calibration is an essential step in most robotics applications. Robots have many things that need to be calibrated:<br />
+<br />
+<ul>
+<li>Camera intrinsics - basically determining the parameters for the pinhole camera model. On some
+RGBD (3d) cameras, this also involves estimating other parameters using in their projections. This
+is usually handled by exporting YAML files that are loaded by the drivers and broadcast on the
+device's camera_info topic.</li>
+<li>Camera extrinsics - where the camera is located. This often involves updating the URDF to properly
+place the camera frame.</li>
+<li>Joint offsets - small errors in the zero position of a joint can cause huge displacement in where
+the arm actually ends up. This is usually handled by a "calibration_rising" flag in the URDF.</li>
+<li>Wheel rollout - for good odometry, you need to know how far you really have travelled. If your
+wheels wear down over time, that has to be taken into account.</li>
+<li>Track width - on differential-drive robots, the distance between in your drive wheels is an
+essential value to know for good odometry when turning.</li>
+<li>IMU - when fusing wheel-based odometry with a gyro, you want to make sure that the scale of the
+gyro values is correct. The gyro bias is usually estimated online by the drivers, rather than given
+a one-time calibration. Magnetometers in an IMU also need to be calibrated.</li>
+</ul>
+My robot_calibration package can do all of these except wheel rollout and magnetometer calibration
+(although the magnetometer calibration will be coming soon).<br />
+<br />
+<b>Evolution of ROS Calibration Packages</b><br />
+There are actually quite a few packages out there for calibrating ROS-based robots. The first package
+was probably <a href="http://wiki.ros.org/pr2_calibration"><i>pr2_calibration</i></a> developed at
+Willow Garage. While the code inside this package isn't all that well documented, there is a paper
+describing the details of how it works:
+<a href="http://www.willowgarage.com/sites/default/files/calibration.pdf">Calibrating a multi-arm
+multi-sensor robot: A Bundle Adjustment Approach</a>.<br />
+<br />
+In basic terms <i>pr2_calibration</i> works by putting checkerboards in the robots grippers, moving
+the arms and head to a large number of poses, and then estimating various offsets which minimize the
+reprojection errors through the two different chains (we can estimate where the checkerboard points
+are through its connection with the arm versus what the camera sees). Nearly all of the available
+calibration packages today rely on similar strategies.<br />
+<br />
+One of the earliest robot-agnostic packages would be
+<a href="https://github.com/ros-perception/calibration"><i>calibration</i></a>. One of my last
+projects at Willow Garage before joining their hardware development team was to make pr2_calibration
+generic, the result of this effort is the <i>calibration</i> package. The downside of both this
+package and <i>pr2_calibration</i> is that they are horribly slow. For the PR2, we needed many,
+many samples - getting all those samples often took 25 minutes or more. The optimizer that ran
+over the data was also slow - adding another 20 minutes. Sadly, even after 45 minutes, the
+calibration failed quite often. At the peak of Willow Garage, when we often had 20+ summer
+interns in addition to our large staff, typically only 2-3 of our 10 robots were calibrated
+well enough to actually use for grasping.<br />
+<br />
+After Willow Garage, I tried a new approach using Google's Ceres solver to rebuild a new calibration
+system. The result was the open source
+<a href="https://github.com/mikeferguson/robot_calibration"><i>robot_calibration</i></a> package.
+This package is used today on the Fetch robot and others.<br />
+<br />
+<b>What robot_calibration Can Do</b><br />
+The <i>robot_calibration</i> package is really intended be an all-inclusive calibration system.
+Currently, it mainly supports 3d sensors. It does take some time to setup for each robot since the
+system is so broad - I'm hoping to eventually create a wizard/GUI like the MoveIt Setup Assistant
+to handle this.<br />
+<br />
+There are two basic steps to calibrating any robot with <i>robot_calibration</i>: first we capture
+a set of data which mainly includes point clouds from our sensors, joint_states data of our robot
+pose, and some TF data. Then we do the actual calibration step by running that data through our
+optimizer to generate corrections to our URDF, and also possibly our camera intrinsics.<br />
+<br />
+<center>
+<a href="/{{ site.baseurl }}assets/images/2020-04-09-calibration.gif">
+<img border="0" src="/{{ site.baseurl }}assets/images/2020-04-09-calibration.gif" width="600" /></a>
+</center>
+<br />
+One of the major benefits of the system is the reliability and speed. On the
+<a href="https://fetchrobotics.com/wp-content/uploads/2018/04/Fetch-and-Freight-Workshop-Paper.pdf">Fetch</a>
+robot, we only needed to capture 100 poses of the arm/head to calibrate the system. This takes only 8
+minutes, and the calibration step typically takes less than a minute. One of my interns, Niharika Arora,
+ran a series of experiments in which we reduce the number of poses down to 25, meaning that capture and
+calibration took only three minutes - with a less than 1% failure rate. Niharika gave a talk on
+robot_calibration at ROSCon 2016 and you see the video <a href="https://vimeo.com/187699563">here</a>.
+We also put together a paper (that was sadly not accepted to ICRA 2016) which contains more details
+on those experiments and how the system works
+[<a href="/{{ site.baseurl }}assets/papers/2015-calibration.pdf">PDF</a>].<br />
+<br />
+In addition to the standard checkerboard targets, <i>robot_calibration</i> also works with LED-based
+calibration targets. The four LEDs in the gripper flash a pattern allowing the robot to automatically
+register the location of the gripper:<br />
+<br />
+<center>
+<a href="/{{ site.baseurl }}assets/images/2020-04-09-gripper.gif" >
+<img border="0" src="/{{ site.baseurl }}assets/images/2020-04-09-gripper.gif" width="600" /></a>
+<i>LED-based calibration target.</i>
+</center>
+<br />
+One of the coolest features of <i>robot_calibration</i> is that it is very accurate at determining
+joint zero angles. Because of this, we did not need fancy jigs or precision machined endstops to set
+the zero positions of the arm. Technicians can just eye the zero angle and then let calibration do
+the rest.<br />
+<br />
+There is quite a bit of documentation in the
+<a href="https://github.com/mikeferguson/robot_calibration/blob/master/README.md">README</a> for
+robot_calibration.<br />
+<br />
+<b>Alternatives</b><br />
+I fully realize that <i>robot_calibration</i> isn't for everyone. If you've got an industrial
+arm that requires no calibration and just want to align a single sensor to it, there are probably
+simpler options.
