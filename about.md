@@ -12,7 +12,7 @@ title: About Me
   Formerly CTO at Fetch Robotics, Founder/CTO at Unbounded Robotics and
   Founder at Vanadium Labs. I've also previously worked at Willow Garage.<br />
   <br />
-  My robots have won numerous awards at the AAAI Robot Challenge,
+  My personal robots have won numerous awards at the AAAI Robot Challenge,
   Trinity Fire Fighting Contest, Canadian National Robot Games, and RoboGames.
 </p>
 
