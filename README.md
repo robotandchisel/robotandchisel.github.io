@@ -6,3 +6,16 @@ This is my new website, merging several previous ones:
  * replacing mostly static front page at fer.gs
 
 The template (hyde) is open sourced under the [MIT license](LICENSE.md).
+
+## Deploy Notes
+
+Setting up on Mac:
+```
+gem install --user-install bundler jekyll
+bundler  (will install dependencies)
+```
+
+Building locally:
+```
+bundler exec jekyll serve
+```
