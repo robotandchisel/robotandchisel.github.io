@@ -1,0 +1,34 @@
+MAPPING EXPERIMENT BAG DATAFILES
+Michael E. Ferguson
+
+2010-08-08-create-ils.bag (3:14s, 4.8MB)
+iRobot with Hokuyo URG-04LX-UG01. Robot was driven from ILS doorway up 
+hallway to CIFA lab, and back down to the ILS lab. This is a very simple 
+dataset, default parameters work nearly OK with gmapping (some hallway 
+shortening is seen).
+
+2010-10-29-armadillo-cci.bag (3:24s, 12.8MB)
+Vanadium Armadillo with Hokuyo URG-04LX-UG01. Robot was driven up the hallway 
+near the CCI student center, around an open area near the doorways, back down 
+the hallway and into the CCI office. Another pretty simple dataset, default
+parameters work fine with gmapping, some hallway shortening is typical. 
+(Also includes cmd_vel and joystick output)
+
+2010-10-29-armadillo-csdept.bag (5:56s, 19.1MB)
+Vanadium Armadillo with Hokuyo URG-04LX-UG01. Robot was driven around a medium
+size loop in the SUNY Albany CS department. 
+(Also includes cmd_vel and joystick output)
+
+2010-12-11-neato-home.bag (5:28s, 8.8MB)
+Neato XV-11 Robot and Laser. Short drive around a home. Forms a short loop.
+
+2010-12-12-neato-ils.bag (4:48s, 6.9MB)
+Neato XV-11 Robot and Laser. Robot was driven from my desk, out into the hall, 
+through the lab, and back to the desk. 
+
+2010-12-23-double-laser.bag (9:04s, 21.7MB)
+Neato XV-11 Robot with laser (topic /base_scan), plus a Hokuyo URG-04LX-UG01 
+(topic /hokuyo_scan) mounted above. Lasers are aligned fairly well in the plane. 
+
+
+
