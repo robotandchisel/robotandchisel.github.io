@@ -83,7 +83,8 @@ documentation on the new magnetometer calibration node, but the basics are:
 The node also has some other modes, such as manual rotation (in case your IMU isn't actually
 mounted in a robot yet). Right now the best source of documentation is the code itself. I plan
 to add documentation to the robot_calibration README later this week and then get a new release
-pushed to debians.
+pushed to debians. _UPDATE: documentation is now in the
+[README](https://github.com/mikeferguson/robot_calibration/blob/master/README.md)_.
 
 ##### Next Steps
 I'm still working on tuning the EKF parameters. I've also started to write some GPS-waypoint
