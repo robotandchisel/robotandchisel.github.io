@@ -9,6 +9,7 @@ tags:
 - national-robotics-week
 - robots
 - ros
+- ubr1
 modified_time: '2020-04-08T11:26:12.697-04:00'
 thumbnail: https://3.bp.blogspot.com/-MZ_5KG74JxM/XooWXdnxO-I/AAAAAAAADg0/APJeUbNw_2kNd8Sci38LMx-Pz8hs94PsgCK4BGAYYCw/s72-c/80E1732.jpg
 blogger_id: tag:blogger.com,1999:blog-8995060597167955455.post-2439713892085343997
