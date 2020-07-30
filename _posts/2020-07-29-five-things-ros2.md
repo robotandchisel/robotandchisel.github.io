@@ -147,6 +147,7 @@ and is probably quite relevant to a large number of users. Here's a few examples
 
  * [Are rmw_serialize and deserialize thread safe?](https://answers.ros.org/question/354484/are-rmw_serialize-and-rmw_deserialize-thread-safe-functions/)
  * [How to unsubscribe from a topic?](https://answers.ros.org/question/354792/rclcpp-how-to-unsubscribe-from-a-topic/)
+ * [Why should we use destory_node in Python](https://answers.ros.org/question/354054/why-should-we-use-destroy_node-for-python-nodes-in-ros2/)
  * [What Does set(node_plugins) actually do?](https://answers.ros.org/question/354631/what-does-setnode_plugins-actually-do/)
 
 ROS2 developers, please take note: we've got lots of great features in this system,
