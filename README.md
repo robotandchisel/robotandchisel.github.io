@@ -19,3 +19,8 @@ Building locally:
 ```
 bundler exec jekyll serve
 ```
+
+To serve un-published future posts:
+```
+bundler exec jekyll serve --future
+```
