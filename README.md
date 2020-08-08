@@ -17,6 +17,7 @@ bundler  (will install dependencies)
 
 Building locally:
 ```
+export GEM_HOME=$HOME/.gem/
 bundler exec jekyll serve
 ```
 
