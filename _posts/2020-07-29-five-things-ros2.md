@@ -104,7 +104,7 @@ In ROS1, you could create "lazy publishers" so that the creators of these intens
 data types would only create and publish the data when someone was listening. They
 would be alerted to someone listening by the connect callback. The lack of lazy
 publishers throughout various drivers and the <code>image_proc</code> and
-<code>depth_image_proc></code> packages is a real challenge to building high performance
+<code>depth_image_proc</code> packages is a real challenge to building high performance
 perception systems. When people ask me "is ROS2 ready?", my first question these days is
 "how much perception/vision are you doing?".
 
