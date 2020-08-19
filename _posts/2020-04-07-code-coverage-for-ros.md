@@ -49,7 +49,7 @@ test targets. You need to define a new target, which we will typically call
 <code>{package_name}_coverage_report<code>
 
 
-{% highlight cmake %}
+```cmake
 # After catkin_package()
 
 if(CATKIN_ENABLE_TESTING AND ENABLE_COVERAGE_TESTING)
@@ -72,7 +72,7 @@ if (CATKIN_ENABLE_TESTING)
     )
   endif()
 endif()
-{% endhighlight %}
+```
 
 That's the configuration needed. Now we can compile the code (with coverage turned on)
 and run the coverage report (which in turn will run the tests):
@@ -92,7 +92,7 @@ extra configuration.
 First, we need to turn on coverage testing in each node using the launch-prefix. You can decide
 on a node-by-node basis which nodes should actually generate coverage information:
 
-{% highlight xml %}
+```xml
 <launch>
 
     <!-- Add an argument to the launch file to turn on coverage -->
@@ -113,11 +113,11 @@ on a node-by-node basis which nodes should actually generate coverage informatio
           launch-prefix="$(arg pythontest_launch_prefix)" />
 
 </launch>
-{% endhighlight %}
+```
 
 Then we turn on coverage by adding the argument in our CMakeLists.txt:
 
-```
+```cmake
 add_rostest(example_rostest.test ARGS coverage:=ENABLE_COVERAGE_TESTING)
 ```
 
