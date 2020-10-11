@@ -1,6 +1,6 @@
 # Setup
 title: Robot & Chisel
-tagline: stuff by michael ferguson.<br>robots, woodworking, etc.
+tagline: stuff by michael ferguson. robots, woodworking, etc.
 url: https://robotandchisel.github.io
 paginate: 3
 paginate_path: "/blog/page:num/"
