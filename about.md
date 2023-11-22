@@ -19,7 +19,7 @@ title: About Me
 # Experience
 See my [LinkedIn](https://www.linkedin.com/in/mfergs/) for more details and history.
 
- * Cobalt Robotics Inc (2020-)
+ * Cobalt Robotics Inc (2020-2023)
  * Botnuvo Inc (2019-2020)
  * OLogic Inc (2018-2020)
  * Fetch Robotics (2014-2017)
