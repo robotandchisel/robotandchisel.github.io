@@ -1,8 +1,8 @@
 ---
 layout: page
+title: ROSCON 2024 Presentation
+exclude: true
 ---
-
-# ROSCON 2024 Presentation
 
 ## Slide Deck
 
