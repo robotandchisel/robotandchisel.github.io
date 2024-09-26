@@ -22,6 +22,7 @@ COMING SOON
 
  * [Using Rocker/Docker]({% post_url 2022-06-21-ubr1-on-ros2 %})
  * [Porting openni2_camera to ROS 2]({% post_url 2020-06-16-ubr1-on-ros2 %})
+ * [Mapping and Localization]({% post_url 2020-08-19-slam-in-ros2 %})
  * [MoveIt2 Setup Assistant Tutorial](https://moveit.picknik.ai/main/doc/examples/setup_assistant/setup_assistant_tutorial.html)
  * <a href="/{{ site.baseurl }}tag/ros2">All ROS 2 Blog Posts</a>
  * <a href="/{{ site.baseurl }}tag/ubr1">All UBR-1 Blog Posts</a>
