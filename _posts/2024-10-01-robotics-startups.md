@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Some Thoughts on Robotics Startup Ecosystems
+title: Some Thoughts on Robotics Startups
 description: A bit of a different type of blog post.
 date: '2024-10-01T14:30:00.00-04:00'
 author: Michael Ferguson
