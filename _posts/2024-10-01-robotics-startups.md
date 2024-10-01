@@ -107,11 +107,10 @@ won't have to build everything in-house. Companies like
 exist today and offer a slice of tools needed to build a robotics solution. You can buy
 robots from UR and MIR. The ROS 2 variant of navigation, Nav2, and arm planning (MoveIt2)
 are already being used in 
-commercial products with far less customization than was needed in ROS 1 - and consulting 
-companies such as
-[PickNik](https://picknik.ai/) and
-[Open Navigation LLC](https://www.opennav.org/) exist to help these next-generation 
-robotics companies integrate with their needs.
+commercial products with far less customization than was needed in ROS 1 - and their 
+respective supporting  companies ([Open Navigation LLC](https://www.opennav.org/) and
+[PickNik](https://picknik.ai/)) exist to help next-generation 
+robotics companies leverage these open source projects.
 
 ## The Actionable Stuff
 
