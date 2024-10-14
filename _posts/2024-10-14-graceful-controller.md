@@ -65,8 +65,8 @@ This underlying control law is based on a paper called  [A Smooth Control Law fo
 
 This control law implements a closed-form solution to find a kinematically feasible linear
 and angular velocity for a differential drive robot to approach a pose, based on just a few
-parameters that are actually fairly robot-independent. The image below shows some example
-trajectories:
+parameters that are actually fairly robot-independent. The image below (from the original paper)
+shows some example trajectories:
 
 <center>
 <img src="/{{ site.baseurl }}assets/images/2024-10-14-control-law.png" width="60%" />
