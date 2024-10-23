@@ -6,7 +6,7 @@ exclude: true
 
 ## Slide Deck
 
-COMING SOON
+<a href="/{{ site.baseurl }}assets/papers/2024-roscon.pdf">Slides (as PDF)</a>
 
 ## Repositories
 
